@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta lang="en">
+		<meta name="viewport" content="width=device-width, initial-scale=5">
+	
+		<title>RPA Dashboard</title> 
+	
+		<link rel="stylesheet" href="" id="theme">
+		
+		<script src="script/jquery-3.4.0.min.js"></script>
+		<script src="script/jquery.csv.js"></script> 
+		<script src="script/Chart.bundle.js"></script> 
+		
+		<script src="data/data.js"></script> <!-- Data for statistics -->
+		<script src="script/quotes.js"></script> <!-- Quotes -->
+		
+	</head>
+	<body>
+		<div id="splash">
+			<video src="styles/teaser.m4v" preload autoplay muted id="splashVideo">
+			</video> 
+		</div>
+		<main>
+			<video autoplay muted loop id="backgroundVideo">
+			</video> 
+			<div class="content-wrapper">
+				<!-- Tiles of Dashboard -->
+				<div class="tile tile-top" id="tile-total">
+					<!-- Frames of the tiles consist of 3 rows (divs) which in turn consist of the neccessary divs to separate the frame elements -->
+					<div class="tileframe frame-tl">
+						<div class="extra1"></div>
+						<div class="extra2"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-total">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<!-- tile content mini: this div contains all the actual content e.g. graphs and text as shown in the overview -->
+					<div class="minicontent" id="minicontent-total">
+						<h1>Robotic Process<br/>Automation</h1>
+						<p>Each tile of this dashboard represents a team of the automation project. Clicking on a tile will give detailed information on the team and its work.</p>
+						<p>This dashboard was originally created for static display and is best viewed with a resolution of 1920&#120;1080.</p>
+						<p>This is a sample to showcase the dashboard’s frontend design. All names and data are entirely fictional.</p>
+						<p>&copy; Dominik Nussbaum</p>
+					</div>
+					<!-- tile content detail: this div contains all the actual content e.g. graphs and text as shown in the detail view -->
+					<div class="detailcontent" id="detailcontent-total">
+						<h1>Robotic Process Automation</h1>
+						<div id="detailtext-total">
+							<p>Originally, the frontend of this dashboard was created in 2019 as my graduation project as Licenced Mediamatician (EFZ). It was designed using HTML5, CSS3 and ES6 JavaScript (using some jQuery and chart.js for the graphs). In the final product, the backend was developed using node.js, providing the data in CSV format to be parsed by the frontend.</p>
+							<p>All visual elements used in the frontend were created using Adobe Photoshop or Illustrator, except for the space background video which was provided by Relaxing Site under the Creative Commons license.</p>
+							<p>The tiles show the various teams involved in the automation project and the value they generate. They show how many working hours they were able to reduce by automating various processes as well as the number of automation processes or ‘bots’ involved for the various tasks. Clicking on the tiles provides some more details, including a short text introducing the team and a list of bots that are currently in development.</p>
+							<p>The main purpose of this dashboard was to be presented on large displays in the team’s office rooms or during trade fairs. It was non-interactive; instead of clicking on the tiles, the views would change automatically every 30 seconds. Also, it is only minimally responsive and provides no practical mobile view.</p>
+							<p>As it served somewhat as an eye-catcher, a flashy retro-futuristic design was used. This design is inspired by mid-20th century science fiction designs, as the automation project used the classic image of humanoid robots for its visual identity.</p>
+							<p>Expanding the science fiction image, a light-hearted quote display was added at the lower right corner, addressing the impact automation has on society through various points of view both today and in past decades.</p>
+							<p>This is a sample to showcase the dashboard’s frontend design. All names and data are entirely fictional.</p>
+							<p style="text-align:right">&copy; Dominik Nussbaum</p>
+						</div>
+					</div>
+				</div>
+				<div class="tile tile-top" id="tile-trantor">
+					<div class="tileframe frame-tl">
+						<div class="extra1"></div>
+						<div class="extra2"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-trantor">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<div class="minicontent" id="minicontent-trantor">
+						<div class="minilogo" id="minilogo-trantor"></div>					
+						<div class="minititle" id="minititle-trantor">Trantor</div>
+						<div class="minihours" id="minihours-trantor"><h2 class="hourvalue-trantor"></h2><h3>hours<br/>automated</h3></div>
+						<div class="minibots" id="minibots-trantor"><h2>53</h2><h3>bots in use</h3></div>
+						<div class="minicash" id="minicash-trantor"><h2><span>CHF </span>51900</h2><h3>cashout reduced</h3></div>
+						<canvas class="minichart" id="minichart-trantor"></canvas>
+					</div>
+					<div class="detailcontent" id="detailcontent-trantor">
+						<div class="detaillogo" id="detaillogo-trantor"></div>
+						<div class="detailtitle" id="detailtitle-trantor">Trantor</div>
+						<div class="detailhours" id="detailhours-trantor"><h2 class="hourvalue-trantor"></h2><h3>hours automated</h3></div>
+						<div class="detailbots" id="detailbots-trantor"><h2>53</h2><h3>bots in use</h3></div>
+						<div class="detailcash" id="detailcash-trantor"><h2><span>CHF </span>51900</h2><h3>cashout reduced</h3></div>
+						<canvas class="detailchart" id="detailchart-trantor"></canvas>
+						<div class="botlist-wrapper">
+							<p class="detaildescription" id="detaildescription-trantor">Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.<br/>
+							In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.</p>
+							<h4>bots in implementation</h4>
+							<table class="botlist" id="botlist-trantor">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tile tile-top" id="tile-anacreon">
+					<div class="tileframe frame-tr">
+						<div class="extra1"></div>
+						<div class="extra2"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-anacreon">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<div class="minicontent" id="minicontent-anacreon">
+						<div class="minilogo" id="minilogo-anacreon"></div>
+						<div class="minititle" id="minititle-anacreon">Anacreon</div>
+						<div class="minihours" id="minihours-anacreon"><h2 class="hourvalue-anacreon"></h2><h3>hours<br/>automated</h3></div>
+						<div class="minibots" id="minibots-anacreon"><h2>51</h2><h3>bots in use</h3></div>
+						<div class="minicash" id="minicash-anacreon"><h2><span>CHF </span>44000</h2><h3>cashout reduced</h3></div>
+						<canvas class="minichart" id="minichart-anacreon"></canvas>
+					</div>
+					<div class="detailcontent" id="detailcontent-anacreon">
+						<div class="detaillogo" id="detaillogo-anacreon"></div>
+						<div class="detailtitle" id="detailtitle-anacreon">Anacreon</div>
+						<div class="detailhours" id="detailhours-anacreon"><h2 class="hourvalue-anacreon"></h2"><h3>hours automated</h3></div>
+						<div class="detailbots" id="detailbots-anacreon"><h2>51</h2><h3>bots in use</h3></div>
+						<div class="detailcash" id="detailcash-anacreon"><h2><span>CHF </span>44000</h2><h3>cashout reduced</h3></div>
+						<canvas class="detailchart" id="detailchart-anacreon"></canvas>
+						<div class="botlist-wrapper">
+							<p class="detaildescription" id="detaildescription-anacreon">In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi.<br/>
+							Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
+							<h4>bots in implementation</h4>
+							<table class="botlist" id="botlist-anacreon">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tile tile-bottom" id="tile-aurora">
+					<div class="tileframe frame-bl">
+						<div class="extra1"></div>
+						<div class="extra2"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-aurora">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<div class="minicontent" id="minicontent-aurora">
+						<div class="minilogo" id="minilogo-aurora"></div>
+						<div class="minititle" id="minititle-aurora">Aurora</div>
+						<div class="minihours" id="minihours-aurora"><h2 class="hourvalue-aurora"></h2><h3>hours<br/>automated</h3></div>
+						<div class="minibots" id="minibots-aurora"><h2>31</h2><h3>bots in use</h3></div>
+						<div class="minicash" id="minicash-aurora"><h2><span>CHF </span>190600</h2><h3>cashout reduced</h3></div>
+						<canvas class="minichart" id="minichart-aurora"></canvas>
+					</div>
+					<div class="detailcontent" id="detailcontent-aurora">
+						<div class="detaillogo" id="detaillogo-aurora"></div>
+						<div class="detailtitle" id="detailtitle-aurora">Aurora</div>
+						<div class="detailhours" id="detailhours-aurora"><h2 class="hourvalue-aurora"></h2><h3>hours automated</h3></div>
+						<div class="detailbots" id="detailbots-aurora"><h2>31</h2><h3>bots in use</h3></div>
+						<div class="detailcash" id="detailcash-aurora"><h2><span>CHF </span>190600</h2><h3>cashout reduced</h3></div>
+						<canvas class="detailchart" id="detailchart-aurora"></canvas>
+						<div class="botlist-wrapper">
+							<p class="detaildescription" id="detaildescription-anacreon">Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.<br/>
+							Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</p>
+							<h4>bots in implementation</h4>
+							<table class="botlist" id="botlist-aurora">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tile tile-bottom" id="tile-terminus">
+					<div class="tileframe frame-br">
+						<div class="extra1"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-terminus">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<div class="minicontent" id="minicontent-terminus">
+						<div class="minilogo" id="minilogo-terminus"></div>
+						<div class="minititle" id="minititle-terminus">Terminus</div>
+						<div class="minihours" id="minihours-terminus"><h2 class="hourvalue-terminus"></h2><h3>hours<br/>automated</h3></div>
+						<div class="minibots" id="minibots-terminus"><h2>24</h2><h3>bots in use</h3></div>
+						<div class="minicash" id="minicash-terminus"><h2><span>CHF </span>63700</h2><h3>cashout reduced</h3></div>
+						<canvas class="minichart" id="minichart-terminus"></canvas>
+					</div>
+					<div class="detailcontent" id="detailcontent-terminus">
+						<div class="detaillogo" id="detaillogo-terminus"></div>
+						<div class="detailtitle" id="detailtitle-terminus">Terminus</div>
+						<div class="detailhours" id="detailhours-terminus"><h2 class="hourvalue-terminus"></h2><h3>hours automated</h3></div>
+						<div class="detailbots" id="detailbots-terminus"><h2>24</h2><h3>bots in use</h3></div>
+						<div class="detailcash" id="detailcash-terminus"><h2><span>CHF </span>63700</h2><h3>cashout reduced</h3></div>
+						<canvas class="detailchart" id="detailchart-terminus"></canvas>
+						<div class="botlist-wrapper">
+							<p class="detaildescription" id="detaildescription-terminus">Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.<br/>
+							Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+							<h4>bots in implementation</h4>
+							<table class="botlist" id="botlist-terminus">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="tile tile-bottom" id="tile-gaia">
+					<div class="tileframe frame-br">
+						<div class="extra1"></div>
+						<div class="extra2"></div>
+						<div class="frame-toprow">
+							<div class="frame-topleft">
+							</div>
+							<div class="frame-topcenter">
+							</div>
+							<div class="frame-topright" id="frame-topright-gaia">
+							</div>
+						</div>
+						<div class="frame-centerrow">
+							<div class="frame-centerleft">
+							</div>
+							<div class="frame-center">
+							</div>
+							<div class="frame-centerright">
+							</div>
+						</div>
+						<div class="frame-bottomrow">
+							<div class="frame-bottomleft">
+							</div>
+							<div class="frame-bottomcenter">
+							</div>
+							<div class="frame-bottomright">
+							</div>
+						</div>
+					</div>
+					<div class="backdrop"></div>
+					<div class="frontdrop"></div>
+					<div class="minicontent" id="minicontent-gaia">
+						<div class="minilogo" id="minilogo-gaia"></div>
+						<div class="minititle" id="minititle-gaia">Gaia</div>
+						<div class="minihours" id="minihours-gaia"><h2 class="hourvalue-gaia"></h2><h3>hours</br>automated</h3></div>
+						<div class="minibots" id="minibots-gaia"><h2>22</h2><h3>bots in use</h3></div>
+						<div class="minicash" id="minicash-gaia"><h2><span>CHF </span>181000</h2><h3>cashout reduced</h3></div>
+						<canvas class="minichart" id="minichart-gaia"></canvas>
+					</div>
+					<div class="detailcontent" id="detailcontent-gaia">
+						<div class="detaillogo" id="detaillogo-gaia"></div>
+						<div class="detailtitle" id="detailtitle-gaia">Gaia</div>
+						<div class="detailhours" id="detailhours-gaia"><h2 class="hourvalue-gaia"></h2><h3>hours automated</h3></div>
+						<div class="detailbots" id="detailbots-gaia"><h2>22</h2><h3>bots in use</h3></div>
+						<div class="detailcash" id="detailcash-gaia"><h2><span>CHF </span>181000</h2><h3>cashout reduced</h3></div>
+						<canvas class="detailchart" id="detailchart-gaia"></canvas>
+						<div class="botlist-wrapper">
+							<p class="detaildescription" id="detaildescription-gaia">Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.<br/>
+							Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+							<h4>bots in implementation</h4>
+							<table class="botlist" id="botlist-gaia">
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="legend">
+					<div class="backdrop" id="legend-backdrop"></div>
+					<video></video>
+					<div class="legend-content" id="legend1">
+						<div class="legend-description" id="description1"><p>reduced hours</p></div>
+					</div>
+					<div class="legend-content" id="legend2">
+						<div class="legend-description" id="description2"><p>avoided hours</p></div>
+					</div>
+					<div class="legend-content" id="legend3">
+						<div class="legend-description" id="description3"><p>All data since January 2018</p><p>Last updated: 01.08.2019</p></div>
+					</div>
+					<div class="frontdrop" id="legend-frontdrop"></div>
+					<div id="legend-frame"></div>
+					<div class="backdrop" id="quote-backdrop"></div>
+					<div id="quote-wrap">
+						<div id="quote"></div>
+					</div>
+					<div id="author"></div>
+					<div class="frontdrop" id="quote-frontdrop"></div>
+					<div id="quote-frame"></div>
+				</div>
+			</div>
+			
+		</main>
+		<script>
+			/**
+			 * Get the value of a querystring
+			 * @param  {String} field The field to get the value of
+			 * @param  {String} url   The URL to get the value from (optional)
+			 * @return {String}       The field value
+			 */
+			var getQueryString = function ( field, url ) {
+				var href = url ? url : window.location.href;
+				var reg = new RegExp( '[?&]' + field + '=([^&#]*)', 'i' );
+				var string = reg.exec(href);
+				return string ? string[1] : null;
+			};
+		</script>
+		<script id="themescript" src="script/script-retrosf.min.js"></script> <!-- Design -->
+		<script src="script/script.min.js"></script> <!-- Main JavaScript code -->
+	</body>
+</html> 
